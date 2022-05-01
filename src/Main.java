@@ -42,24 +42,18 @@ public class Main {
         double creditRate = (wantedSum / 100) * 10;
         double creditRateMonth;
         int max = salary / 2;
-        if (salary < 80_000) {
-            if (age < 23) {
-                creditRate = creditRate + (wantedSum / 100);
-            } else {
-                if (age < 30 && age >= 23) {
-                    creditRate = creditRate + (wantedSum / 100) * 0.5;
-                }
-            }
-        } else {
-            if (salary > 80_000) {
-                creditRate = creditRate - (wantedSum / 100) * 0.7;
-            }
+        if (salary < 80_000 && age < 23) {
+            creditRate = creditRate + (wantedSum / 100);
+        } else if (salary < 80_000 && age >= 23 && age < 30) {
+            creditRate = creditRate + (wantedSum / 100) * 0.5;
+        } else if (salary > 80_000) {
+            creditRate = creditRate - (wantedSum / 100) * 0.7;
         }
         creditRateMonth = creditRate / 12;
         if (max > creditRateMonth + sumMonth) {
-            System.out.println("Максимальный платеж при зарплате "+salary+" равен "+max+" рублeй. Платеж ро кредиту "+(creditRateMonth+sumMonth)+" рублей. Одобрено");
+            System.out.println("Максимальный платеж при зарплате " + salary + " равен " + max + " рублeй. Платеж ро кредиту " + (creditRateMonth + sumMonth) + " рублей. Одобрено");
         } else {
-            System.out.println("Максимальный платеж при зарплате "+salary+" равен "+max+" рублeй. Платеж ро кредиту "+(creditRateMonth+sumMonth)+" рублей. Не одобрено");
+            System.out.println("Максимальный платеж при зарплате " + salary + " равен " + max + " рублeй. Платеж ро кредиту " + (creditRateMonth + sumMonth) + " рублей. Не одобрено");
         }
     }
 }
